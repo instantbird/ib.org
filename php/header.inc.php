@@ -215,13 +215,20 @@ function footer()
 
   <div id="footer-shadow">
     <div id="footer">
-      <p>&copy; 2007-2013 - <a href="about.html">'.$bundle->_('theInstantbirdTeam').'</a>.</p>
+      <p>&copy; 2007-2013 - <a href="'.ibcom_url('about.html').'">'.$bundle->_('theInstantbirdTeam').'</a>.</p>
       <p class="small-text">'.$bundle->_('namesAndTrademarksPropertyOfTheirOwner').'</p>
     </div>
   </div>
 
 </body>
 </html>';
+}
+
+// The About and FAQ pages only exist on www.instantbird.com.
+function ibcom_url($page)
+{
+  global $website_locale;
+  return 'https://www.instantbird.com/'.(isset($_GET['lang']) ? $website_locale.'/' : '').$page;
 }
 
 function headerLink($url, $label)
@@ -253,9 +260,9 @@ function head()
         <span></span>'.
   headerLink('http://blog.instantbird.org/', $header->_('blogLink')).
   headerlink('https://addons.instantbird.org/', $header->_('addonsLink')).
-  headerlink('faq.html', $header->_('faqLink')).
+  headerlink(ibcom_url('faq.html'), $header->_('faqLink')).
   headerlink('https://wiki.instantbird.org/', $header->_('developersLink')).
-  headerlink('about.html', $header->_('aboutLink')).
+  headerlink(ibcom_url('about.html'), $header->_('aboutLink')).
 '
 
       </div>
