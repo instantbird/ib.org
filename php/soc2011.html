@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Instantbird - Google Summer of Code 2011 Projects ideas</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <link rel="stylesheet" type="text/css" href="theme/home.css" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    ul ul {margin-bottom: 2em;}
+    ul ul li {margin-top: 0.5em;}
+  </style>
+
+</head>
+
+<body>
+
+  <div id="shadow">
+    <div id="main">
+      <div id="navigation">
+        <a href="http://www.instantbird.com/" id="logo-top"><span>Home</span></a>
+        <span></span><a href="http://blog.instantbird.org/">News</a><a href="https://addons.instantbird.org/">Add-ons</a><a href="http://www.instantbird.com/faq.html">F.A.Q.</a><a href="https://wiki.instantbird.org/">Wiki</a><a href="http://www.instantbird.com/about.html">About</a>
+      </div>
+
+
+  <div id="page">
+
+<h1>Google Summer of Code 2011 Projects ideas</h1>
+
+<ul>
+
+<li>     Account import wizard<ul>
+<li>           Goal: Ease the pain of switching to Instantbird</li>
+<li>           Technologies: JavaScript, XPCOM, Windows, C, C++, libpurple...</li>
+<li>           Subject: Lots of users don't try a new IM client only because they don't want to spend time reconfiguring all their IM accounts. Being able to import accounts from other clients installed on the system would help Instantbird adoption. The student should focus on the dominant IM clients (Windows Live Messenger, AIM, ...) and on the other multi network IM clients (Digsby, Pidgin, Trillian, Miranda, ...). The student will need to study the way other IM clients store their profile data (reverse engineering may be required), think of an architecture to share as much code as possible between the various import modules, and implement import modules for some clients.</li>
+</ul>
+</li>
+
+
+<li>     Android Version of Instantbird<ul>
+ <li>           Goal: Make Instantbird even more cross platform and show it can work on Android devices.</li>
+ <li>           Technologies: Android, Mozilla back end and front end technologies (C++, XUL, JavaScript, ...).</li>
+ <li>           Subject: One of Instantbird's goals is to be available on all common platforms. As part as Mozilla's ongoing Mobile initiative, there has been some work on porting Mozilla to work on Mobile devices. Firefox Mobile has been released for Android, so the technology to use Mozilla on mobile devices should be ready. Making Instantbird work on such devices should be a cool project. This project would include building the core of Instantbird for mobile platforms, but also designing a new user interface that would be suitable for use on small touch screens. The student needs a good knowledge of XUL, should have access to mobile devices supported by Firefox Mobile, and should have a strong interest for designing usable user interfaces.</li>
+</ul></li>
+
+
+<li>JavaScript Implementation of IM protocols<ul>
+<li>   Goal: Implement new protocols in JavaScript, or create more stable implementations of existing ones.
+<li>   Technologies: JavaScript, C, C++, XPCOM</li>
+<li>   Subject: Instantbird 0.3 will support protocol plugins implemented in JavaScript in addition to the C libpurple plugins used before. The student will either add support for new protocols in Instantbird (if so, explain why this protocol matters) or reimplement in JavaScript protocols that are currently poorly supported by libpurple (if so, explain what will be better supported in the new implementation, or why the current implementation is broken). All new protocol plugins will go through a strict code review to ensure high code quality. The student working on new protocols should take every opportunity to improve the code and APIs shared by all JS protocol plugins.
+</ul></li>
+
+
+<li>Logging system<ul>
+<li>Technologies: JavaScript, SQL, Gloda, XUL, XPCOM, ...</li>
+<li>Subject: A student working on this project will implement a new log storage back-end in Instantbird using SQLite. The format should allow efficient search (reuse code from Gloda in Thunderbird) and prevent dataloss. The student will also have to think about the user interface of the log viewer. Things to keep in mind when working on this project: it should be easy to import logs from other IM applications into this system; it should be easy to export logs; it should be easy to store logs on a remote server.</li>
+</ul></li>
+
+
+<li>Sync for Instantbird<ul>
+<li>Technologies: JavaScript, XPCOM, ...</li>
+<li>Subject: The goal is to provide users with a reliable way to synchronize their private data stored in their Instantbird profiles on several machines. The data should be stored 'in the cloud' without it being a threat for the users' privacy. The code of Firefox Sync should be used, so most of the work will be to decide which data should be transferred, how to do it, and to implement it.</li>
+</ul></li>
+
+
+<li> Test suite for Instantbird, purplexpcom and libpurple<ul>
+ <li>           Goal: Ensure Instantbird features keep working and regressions aren't introduced</li>
+ <li>           Technologies: Mozilla automated testing frameworks will be used (JavaScript, C++, xpcshell, Mochitest, chrome...)</li>
+ <li>           Subject: The test suite should be compatible with Mozilla automated testing. It should be possible to test libpurple, purplexpcom and Instantbird alongside with Mozilla.</li>
+</ul></li>
+
+
+<li>Voice and Video<ul>
+<li>    Goal: Support the voice and video feature of various IM protocols</li>
+<li>    Technologies: C, C++, XUL, JavaScript, libpurple, XPCOM, gstreamer</li>
+<li>    Subject: This project intends to prepare Instantbird for the voice and video features. A fully working version is not required to complete this project, but the student will at least need to prove that s/he has seriously investigated using the various open source projects that have started some work on this. The student will need to experiment both with usage of the microphone and webcam on the three supported OSes, and with the various IM protocols that supports these features. The student should also provide UI mockups for what a well-thought user interface for voice and video could be in a multiprotocol IM client.</li>
+</ul></li>
+
+
+</ul>
+
+<p>Feel free to submit other ideas if you think they are great. Be creative!</p>
+
+<hr/>
+<p>We propose the following template for applications:</p>
+<blockquote>
+<p>What is your proposed project?</p>
+
+<p>Why is this project useful/interesting for Instantbird?</p>
+
+<p>Why are you interested by working on this project?</p>
+
+<p>Why are you the best individual to work on this?</p>
+
+<p>Please include details of your academic, industry, and/or open source development experience, and other details as you see fit...</p>
+
+
+<p>Please explain how you intend to work on this project. Show us that you have already thought seriously about the project, how you will start, give a rough estimate of the time needed for each step of the project.</p>
+
+<p>Feel free to include anything else that you think may be relevant.</p>
+</blockquote>
+</div>
+
+  <div id="footer-shadow">
+    <div id="footer">
+      <p>&copy; 2007-2011 - <a href="http://www.instantbird.com/about.html">The Instantbird Team</a>.</p>
+      <p class="small-text">All product names and trademarks are the property of their respective owners.</p>
+    </div>
+  </div>
+
+</body>
+</html>
