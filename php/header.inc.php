@@ -19,7 +19,7 @@ function get_preferred_locale_from_array($locales)
   }
 
   $res = 'en-US';
-  foreach (explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']) as $lang) {
+  foreach (explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '') as $lang) {
     $locale = explode(';', $lang);
     $locale = strtolower($locale[0]);
     if (isset($locales[$locale]))
@@ -77,7 +77,7 @@ class bundle {
     $this->read_properties_file_into_array("l10n/en-US/$module.properties", $array);
     if ($locale == 'ct') {
       foreach ($array as $key => $str)
-        $array[$key] = preg_replace('@(&?\w+)@e', "\$this->cot('\\1')", $str);
+        $array[$key] = preg_replace_callback('@(&?\w+)@', fn($m) => $this->cot($m[1]), $str);
      }
     else if ($locale != 'en-US')
       $this->read_properties_file_into_array("l10n/$locale/$module.properties", $array);
@@ -93,13 +93,13 @@ class bundle {
   }
 
   function _($key) {
-    return $this->string_array[$key];
+    return $this->string_array[$key] ?? '';
   }
 }
 
 function __($page_content, $bundle, $replacements = NULL)
 {
-  $localized = preg_replace('@_\((.*?)\)@e', '$bundle->_("\1")', $page_content);
+  $localized = preg_replace_callback('@_\((.*?)\)@', fn($m) => $bundle->_($m[1]), $page_content);
   if ($replacements)
     return strtr($localized, $replacements);
   return $localized;
